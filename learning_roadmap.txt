@@ -1,0 +1,4 @@
+#stuff that you gotta learn:
+
+#1. the missing semester MIT course (LIKE ALL OF IT)
+# pandas, numpy, torch, matplotlib (all critical)

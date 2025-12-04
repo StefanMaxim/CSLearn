@@ -4,16 +4,28 @@
 #include<stdlib.h>
 #include<math.h>
 
+
 /**
  * Basic Sorting Algorithms Implimented in C
  * 
  * FIRST SOME EXPLANATIONS ON ARRAYS AND POINTERS:
  * 
- * int arr[10]; here arr is of type int[10], an actual array
+ * int arr[10]; here arr is of type int[10], an actual array (IT IS A SYMBOLIC NAME FOR A CONTIGUOUS REGION OF MEMORY)
  * if you write: 
  * int* p;
- * p = a, a will decay to a pointer to the array, ie &a[0] or a pointer
- * to the first element
+ * p = arr, arr will decay to a pointer to the array, ie &a[0] or a pointer
+ * to the first element (why? think of stack frames,since the stack frames are separate, you gotta copy over the entire
+ * array, which takes up a lot of space which isn't necessary) 
+ * 
+ * NOTE: the passed address is the adress of teh variable in the calling frame!
+ * 
+ * (in python, all objects are on the heap and only object 
+ * references are passes, which means functinally you do pass objects since with a reference alone you can find metadata
+ * about the object, not just where it is)
+ * 
+ * NOTE: since in python everything is an object, you can change objects from outside of the function with 
+ * no additional oversight. (FOR IMMUTABLE TYPES HOWEVER LIKE INTEGERS, whenever you try to change it, it just rebinds 
+ * the name to another integer with the new value)
  * 
  * NORMALLY, ARRAYS DECAY WHEN PASSED TO A FUNCTION EXCEPT FOR
  * SIZEOF AND &, in which case they do not
@@ -73,6 +85,10 @@
  * CPU never asks how big the array is, because the compiler already knows.
  * SIZEOF IS LITERALLY DONE IN COMPILETIME FOR KNOWN TYPES, ITS JUST THE KNOWN SIZES FOR THOSE TYPES
  * COMPILER KNOWS THAT AN OBJ OF int (*)[10] WILL HAVE SIZE 10 * sizeof(int) = 10 * 4 = 40. 
+ * 
+ * 
+ * NOTE: WHen passing an array, can pass as both int* arr or int arr[], where int arr[] is the same as int* arr
+ * (compiler translated automatically)
  * 
  * 
  */
