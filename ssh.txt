@@ -370,3 +370,66 @@ C:\Users\<YourName>\.wslconfig
 becomes:
 
 /mnt/c/Users/<YourName>/.wslconfig
+
+
+
+COPYING FILES:
+
+scp user@remote_host:/path/to/remote/file /path/to/local/destination
+
+
+
+
+
+
+
+NEW STUFF:
+
+sshing in to a VM inside of a machine.
+
+1: setup ssh server in teh vm as per use
+
+2: Set up port forwarding from the VM to the Host machine.:
+
+In virtualbox, go to networking, under adapter1, enable network adapter and switch to NAT
+
+then, go to advanced, then port forwarding, and set up a new rule:
+(REMEMBER: HOST = windows computer running virtualbox, GUEST = ubuntu VM inside virtualbox)
+
+Field	Value
+Name	ssh
+Protocol	TCP
+Host IP	(leave blank) or 127.0.0.1
+Host Port	2222
+Guest IP	(leave blank)
+Guest Port	22
+
+then, running:
+
+ssh -p 2222 your_vm_username@127.0.0.1
+
+The SSH client on the host:
+
+Uses the SSH protocol
+
+Connects to 127.0.0.1 (the host itself)
+
+On port 2222 (because of -p 2222)
+
+VirtualBox NAT port forwarding then says:
+
+“Any TCP traffic to host:2222 → send it to guest:22”
+
+Inside the guest VM (Ubuntu):
+
+The SSH server (sshd) is listening on port 22
+
+It receives that forwarded connection and logs you in as user
+
+
+can also use bridged adapting to make it behave as just another machine on your lan
+
+
+
+Primitive start in networking:
+
